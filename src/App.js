@@ -22,11 +22,9 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">ß
         <div>
           <FilteredList list={stickerList} />
         </div>
-      </header>
     </div>
   );
 }
