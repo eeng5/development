@@ -5,18 +5,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
 
   const stickerList = [
-    { name: "awesome", number: "one", key: 1 },
-    { name: "boba", number: "three", key: 2 },
-    { name: "cosmic", number: "one", key: 3 },
-    { name: "highland", number: "one", key: 4 },
-    { name: "mountain", number: "one", key: 5 },
-    { name: "paula", number: "one", key: 6 },
-    { name: "positivity", number: "one", key: 7 },
-    { name: "ramen", number: "one", key: 8 },
-    { name: "retro", number: "four", key: 9 },
-    { name: "rick", number: "one", key: 10 },
-    { name: "succulents", number: "twenty", key: 11 },
-    { name: "vine", number: "nine", key: 12 }
+    { name: "awesome", number: "one", key: 1, content: "music" },
+    { name: "boba", number: "three", key: 2, content: "food" },
+    { name: "cosmic", number: "one", key: 3, content: "music" },
+    { name: "highland", number: "one", key: 4, content: "animals" },
+    { name: "mountain", number: "one", key: 5 , content: "nature"},
+    { name: "paula", number: "one", key: 6, content: "random" },
+    { name: "positivity", number: "one", key: 7, content: "random" },
+    { name: "ramen", number: "one", key: 8, content: "food" },
+    { name: "retro", number: "four", key: 9, content: "random" },
+    { name: "rick", number: "one", key: 10, content: "media" },
+    { name: "succulents", number: "twenty", key: 11, content: "nature" },
+    { name: "vine", number: "nine", key: 12, content: "media" }
   ]
 
 
