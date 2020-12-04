@@ -11,6 +11,7 @@ class FilteredList extends Component {
             content: "all",
             sort: null,
             total: 0,
+            checkout: false,
         };
     }
 
@@ -71,6 +72,22 @@ class FilteredList extends Component {
         })
     }
 
+    checkout = () => {
+        this.setState({
+            checkout: true
+        })
+    }
+
+    back = () => {
+        this.setState({
+            number: "all",
+            content: "all",
+            sort: null,
+            total: 0,
+            checkout: false
+        })
+    }
+
     render() {
         return (
             <div>
@@ -121,7 +138,18 @@ class FilteredList extends Component {
                     <div style={{ background: '#f8f9fa', margin: '2em', padding: '1em' }} className="border rounded">
                         <h5>Shopping Cart</h5>
                         <p className="card-text">Total: ${this.state.total}</p>
-                        <Button variant="dark">Checkout</Button>
+                        <Button onClick={() => this.checkout()} variant="dark">Checkout</Button>
+                        <div className="container">
+                            {this.state.checkout ?
+                                <div>
+                                    <br></br>
+                                    <div className="alert alert-success alert-dismissable">
+                                        <button className="close" data-dismiss="alert" aria-hidden="true" onClick={() => this.back()}>&times;</button>
+                                Order received! Thank you for your purchase! &nbsp;
+                            </div>
+                                </div>
+                                : null}
+                        </div>
                     </div>
                 </div>
                 <DisplayList list={this.state.sort === "#highest" ? this.props.list.filter(this.matchesFilter).sort((item1, item2) => item2.price - item1.price) : this.props.list.filter(this.matchesFilter).sort((item1, item2) => item1.price - item2.price)} incrementTotal={(price) => { this.incrementTotal(price) }} />
