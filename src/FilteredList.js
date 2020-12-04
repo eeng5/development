@@ -10,7 +10,7 @@ class FilteredList extends Component {
             number: "all",
             content: "all",
             sort: null,
-            total: 0,
+            total: 0.00,
             checkout: false,
             cart: [],
         };
@@ -80,7 +80,8 @@ class FilteredList extends Component {
     // indicates that the user has checked out (and so the thank you message should be shown)
     checkout = () => {
         this.setState({
-            checkout: true
+            checkout: true,
+            cart: []
         })
     }
 
@@ -89,6 +90,19 @@ class FilteredList extends Component {
         var newArray = this.state.cart;
         newArray.push(newItem);
         this.setState({
+            cart: newArray
+        })
+    }
+
+    removeItem = item => {
+        var newTotal = (parseFloat(this.state.total) - parseFloat(item.price)).toFixed(2);
+        var newArray = this.state.cart;
+        const index = this.state.cart.indexOf(item);
+        if (index > -1) {
+            newArray.splice(index, 1);
+        }
+        this.setState({
+            total: newTotal,
             cart: newArray
         })
     }
@@ -147,7 +161,8 @@ class FilteredList extends Component {
                             this.state.cart.map(item =>
                                 <ul key={Math.random().toString(36).substr(2, 9)}>
                                     <li>
-                                        {item}
+                                        {item.name} &nbsp;
+                                        <button className="close" data-dismiss="alert" aria-hidden="true" onClick={() => this.removeItem(item) }>&times;</button>
                                     </li>
                                 </ul>
                             )}
@@ -168,7 +183,7 @@ class FilteredList extends Component {
                         </div>
                     </div>
                 </div>
-                <DisplayList list={this.state.sort === "#highest" ? this.props.list.filter(this.matchesFilter).sort((item1, item2) => item2.price - item1.price) : this.props.list.filter(this.matchesFilter).sort((item1, item2) => item1.price - item2.price)} incrementTotal={(price) => { this.incrementTotal(price) }} cartList={(newItem) => { this.addToCart(newItem) }} />
+                <DisplayList list={this.state.sort === "#highest" ? this.props.list.filter(this.matchesFilter).sort((item1, item2) => item2.price - item1.price) : this.props.list.filter(this.matchesFilter).sort((item1, item2) => item1.price - item2.price)} incrementTotal={(price) => { this.incrementTotal(price) }} cartList={(item) => { this.addToCart(item) }} />
             </div>
         );
     }

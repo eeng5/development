@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+## Organization of components
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+I have two components in my application: FilteredList and DisplayedList. FilteredList contains
+filtering, sorting, and aggregator methods. It keeps track of many stateful variables that are
+updated when the user makes changes, and trigger updates in the DOM. FilteredList uses 
+bootstrap, and specifically builds out the filter and sorting components and the shopping cart
+display. DisplayedList, on the other hand, maps each product from App.js to an HTML element 
+whose render is triggered in the FilteredList component. DisplayedList uses props that it 
+inherits from FilteredList: list, incrementTotal, and cartList. "List" is the immutable list of 
+products hard-coded in App.js, "incrementTotal" calls a function that increments the total price 
+stored in state, and "cartList" adds any new items 'added to cart' by the user to the list of 
+items that is displayed in the "Shopping Cart" componenet.  
 
-## Available Scripts
+## How data is passed down through components
 
-In the project directory, you can run:
+Most of the data needed for this app is passed down using props. The hard-coded list of products
+found in App.js is passed as a prop to FilteredList, which then passes the same argument as a 
+prop to DisplayedList (which maps each list item to an HTML element). FilteredList also passes
+two additional props to DisplayedList: incrementTotal and cartList. These two props are functions
+because they require values that can only be accesssed in DisplayedList (since these values exist
+at the individual list item level). For example, in order to increment the total cost displayed 
+in the Shopping Cart component, we need to be able to access the price of the item that was 
+selected by the user. Therefore, when each item's "Add to Cart" button is clicked, these items 
+pass their price into a function in DisplayedList that calls the prop function incrementTotal
+(still with price as a parameter), and successfully updates the total cost state in FilteredList.
+Similarly, in order to update the list of items that the user has in their cart, when a new 
+item is added to the user's cart the item passes its name to the same function in DisplayedList
+which then calls the prop function cartList. CartList takes this name as an argument and - 
+within the FilteredList component - appends this new item to the displayed list of products in
+the user's shopping cart. 
 
-### `npm start`
+## How the user triggers state changes
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+As previously implied, the user triggers state changes by selecting different filters, sorting
+methods, and by adding item to their cart and checking out. When different filters are 
+selected, the state in FilteredList is updated to reflect which products should be shown.
+Likewise, when a different sorting method is selected from the dropdown, the state in 
+FilteredList is updated to sort the products in either ascending or descending order by price.
+Additioanlly, when the user adds an item to their cart, state is updated through the passing of
+item properties discussed in the previous paragraph to allow the shopping cart to reflect an
+accurate total price and an updated list of items that the user has selected for purchase. 
+Finally, checking out updates the state to indicate that a message thanking the user for their
+purchase should be shown.

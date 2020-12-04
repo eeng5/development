@@ -11,7 +11,7 @@ class DisplayList extends Component {
     // updates the cart (adds name and increments total cost) based on the new item added
     updateTotal = item => {
         this.props.incrementTotal(item.price);
-        this.props.cartList(item.name)
+        this.props.cartList(item)
     }
 
     render() {
