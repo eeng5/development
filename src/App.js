@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
+  // hard-coded list of products and their data
   const stickerList = [
     { price: "1.99", name: "Awesome Mix", number: "1", key: 1, content: "music", image: "https://ih1.redbubble.net/image.378193196.5998/st,small,507x507-pad,600x600,f8f8f8.u1.jpg" },
     { price: "2.99", name: "Bubble Tea", number: "3", key: 2, content: "food", image: "https://ih1.redbubble.net/image.190422368.9890/st,small,507x507-pad,600x600,f8f8f8.jpg" },

@@ -1,4 +1,4 @@
-// maps each product from App.js to an HTML element or Component for render
+// maps each product from App.js to an HTML element for render
 import { Component } from "react";
 import { Card, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -6,13 +6,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 class DisplayList extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            number: "all",
-            content: "all",
-            sort: null,
-        };
     }
 
+    // updates the cart (adds name and increments total cost) based on the new item added
     updateTotal = item => {
         this.props.incrementTotal(item.price);
         this.props.cartList(item.name)

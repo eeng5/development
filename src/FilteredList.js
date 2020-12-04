@@ -1,4 +1,4 @@
-//  contains filtering/sorting/aggregator methods
+// contains filtering/sorting/aggregator methods
 import { Component } from "react";
 import { Navbar, Nav, NavDropdown, Button } from 'react-bootstrap';
 import DisplayList from './DisplayList';
@@ -23,19 +23,21 @@ class FilteredList extends Component {
         })
     };
 
+    // sets the state of the filter content
     onSelectFilterContent = event => {
         this.setState({
             content: event
         })
     };
 
+    // sets the currently-selected method of sorting
     onSelectSort = event => {
         this.setState({
             sort: event
         })
     };
 
-    //creating a filtering condition
+    // filtering condition
     matchesFilter = item => {
         // all items should be shown when no filter is selected
         if (this.state.number === "all") {
@@ -59,6 +61,7 @@ class FilteredList extends Component {
         }
     }
 
+    // sets the sort type displayed in the dropdown
     getTitle = () => {
         if (this.state.sort === "#highest") {
             return "highest to lowest"
@@ -66,6 +69,7 @@ class FilteredList extends Component {
         return "lowest to highest"
     }
 
+    // updates the new total cost when something new is added to the cart
     incrementTotal = price => {
         var newTotal = (parseFloat(this.state.total) + parseFloat(price)).toFixed(2);
         this.setState({
@@ -73,12 +77,14 @@ class FilteredList extends Component {
         })
     }
 
+    // indicates that the user has checked out (and so the thank you message should be shown)
     checkout = () => {
         this.setState({
             checkout: true
         })
     }
 
+    // append the newly added item to the displayed cart list
     addToCart = newItem => {
         var newArray = this.state.cart;
         newArray.push(newItem);
