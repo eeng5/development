@@ -13,8 +13,9 @@ class DisplayList extends Component {
         };
     }
 
-    updateTotal = price => {
-        this.props.incrementTotal(price);
+    updateTotal = item => {
+        this.props.incrementTotal(item.price);
+        this.props.cartList(item.name)
     }
 
     render() {
@@ -34,7 +35,7 @@ class DisplayList extends Component {
                             <Card.Text>
                                 Price: ${item.price}
                             </Card.Text>
-                            <Button onClick={() => this.updateTotal(item.price)} variant="dark">Add to Cart</Button>
+                            <Button onClick={() => this.updateTotal(item)} variant="dark">Add to Cart</Button>
                         </Card.Body>
                     </Card>
                 )
