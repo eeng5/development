@@ -29,10 +29,10 @@ class DisplayList extends Component {
                                 Number of stickers: {item.number}
                             </Card.Text>
                             <Card.Text>
-                                Price: ${item.price}
+                                Content: {item.content}
                             </Card.Text>
                             <Card.Text>
-                                Content: {item.content}
+                                Price: ${item.price}
                             </Card.Text>
                             <Button onClick={() => this.updateTotal(item.price)} variant="dark">Add to Cart</Button>
                         </Card.Body>

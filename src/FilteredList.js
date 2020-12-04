@@ -78,16 +78,6 @@ class FilteredList extends Component {
         })
     }
 
-    back = () => {
-        this.setState({
-            number: "all",
-            content: "all",
-            sort: null,
-            total: 0,
-            checkout: false
-        })
-    }
-
     render() {
         return (
             <div>
@@ -137,6 +127,7 @@ class FilteredList extends Component {
                     </div>
                     <div style={{ background: '#f8f9fa', margin: '2em', padding: '1em' }} className="border rounded">
                         <h5>Shopping Cart</h5>
+                        <br></br>
                         <p className="card-text">Total: ${this.state.total}</p>
                         <Button onClick={() => this.checkout()} variant="dark">Checkout</Button>
                         <div className="container">
@@ -144,7 +135,7 @@ class FilteredList extends Component {
                                 <div>
                                     <br></br>
                                     <div className="alert alert-success alert-dismissable">
-                                        <button className="close" data-dismiss="alert" aria-hidden="true" onClick={() => this.back()}>&times;</button>
+                                        <button className="close" data-dismiss="alert" aria-hidden="true" onClick={() => window.location.reload()}>&times;</button>
                                 Order received! Thank you for your purchase! &nbsp;
                             </div>
                                 </div>

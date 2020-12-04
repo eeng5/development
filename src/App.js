@@ -10,7 +10,7 @@ function App() {
     { price: "2.99", name: "Bubble Tea", number: "3", key: 2, content: "food", image: "https://ih1.redbubble.net/image.190422368.9890/st,small,507x507-pad,600x600,f8f8f8.jpg" },
     { price: "1.59", name: "Cosmic Record", number: "1", key: 3, content: "music", image: "https://ih1.redbubble.net/image.817431979.4277/st,small,507x507-pad,600x600,f8f8f8.jpg" },
     { price: "1.99", name: "Highland Coo", number: "1", key: 4, content: "animals", image: "https://ih1.redbubble.net/image.488065581.0607/st,small,507x507-pad,600x600,f8f8f8.u3.jpg" },
-    { price: "1.39", name: "Landscape", number: "1", key: 5 , content: "nature", image: "https://ih1.redbubble.net/image.151193938.5041/st,small,507x507-pad,600x600,f8f8f8.jpg" },
+    { price: "1.39", name: "Landscape", number: "1", key: 5, content: "nature", image: "https://ih1.redbubble.net/image.151193938.5041/st,small,507x507-pad,600x600,f8f8f8.jpg" },
     { price: "1.99", name: "Paula Deen", number: "1", key: 6, content: "random", image: "https://ih1.redbubble.net/image.213639840.6728/st,small,507x507-pad,600x600,f8f8f8.u2.jpg" },
     { price: "1.29", name: "Positivity", number: "1", key: 7, content: "random", image: "https://ih1.redbubble.net/image.1612432275.6013/st,small,507x507-pad,600x600,f8f8f8.u3.jpg" },
     { price: "1.89", name: "Ramen", number: "1", key: 8, content: "food", image: "https://ih1.redbubble.net/image.513535564.4970/st,small,507x507-pad,600x600,f8f8f8.u4.jpg" },
@@ -23,10 +23,10 @@ function App() {
 
   return (
     <div className="App">
-        <div>
-          <h1 style={{ marginTop: '1em', color: "white" }}>The Savvy Sticker Supply</h1>
-          <FilteredList list={stickerList} />
-        </div>
+      <div>
+        <h1 style={{ marginTop: '1em', color: "white" }}>The Savvy Sticker Supply</h1>
+        <FilteredList list={stickerList} />
+      </div>
     </div>
   );
 }
